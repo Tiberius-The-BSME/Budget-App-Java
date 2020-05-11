@@ -1,0 +1,69 @@
+package com.company;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Vacation Budget Planner App!");
+        System.out.println("What is your name?");
+        String name = scanner.nextLine();
+        System.out.println("Hello "+ name+ ". Where would you like to visit?");
+        System.out.println("Type in the name of your dream location: (1) Mexico OR (2) Jamaica");
+        String place1 = scanner.nextLine();
+        System.out.println("Thanks "+ name+ "! You entered "+ place1+".");
+        switch (place1.toLowerCase()) {
+            case "mexico":
+                System.out.println("Awesome! Mexico is a great location. Just remember to buy sunscreen!");
+                System.out.println("*********************************************************");
+                System.out.println("Type in the number of days you would like to spend in Mexico?");
+                System.out.println("Enter the number only.");
+                int num = scanner.nextInt();
+                System.out.println("How much money do you plan on spending during your vacation?");
+                double cash = scanner.nextDouble();
+                int hours = num*24;
+                int min = hours*60;
+                DecimalFormat df2 = new DecimalFormat("0.00");
+                System.out.println("You will spend a total of "+hours+ " hours in Mexico.");
+                System.out.println("That's a total of "+min+" minutes in Mexico.");
+                double budget = cash/num;
+                double peso = cash*23.73; //exchange rate fluctuates daily - current as of 4/10 (xe.com)
+                double peso1 = budget*23.73;
+                System.out.println("Based on your budget you can spend approximately $"+ df2.format(budget)+ " per day!");
+                System.out.println("That is equal to "+df2.format(peso1)+ " Mexican Pesos per day.");
+                System.out.println("You will need to exchange your USD to the local currency before you arrive." +
+                        " For $"+df2.format(cash)+" you should receive a total of "+ df2.format(peso)+" in Mexican Pesos.");
+                System.out.println("Enjoy your trip to Mexico!");
+                break;
+            case "jamaica":
+                System.out.println("Great! Jamaica is your dream destination.");
+                System.out.println("*********************************************************");
+                System.out.println("How many days you would like to spend in Jamaica?");
+                System.out.println("Enter the number only.");
+                int num1 = scanner.nextInt();
+                System.out.println("How much in USD do you plan to spend on your entire trip?");
+                double cash1 = scanner.nextDouble();
+                int hours1 = num1*24;
+                int min1 = hours1*60;
+                DecimalFormat df3 = new DecimalFormat("0.00");
+                System.out.println("You will spend a total of "+hours1+ " hours in Jamaica.");
+                System.out.println("That's a total of "+min1+" minutes in Jamaica.");
+                double budget1 = cash1/num1;
+                double jdollar = cash1*135;
+                double jdollar1 = budget1*135;
+                System.out.println("Based on your budget you can spend $"+ df3.format(budget1)+ " per day!");
+                System.out.println("That is equal to "+df3.format(jdollar1)+ " Jamaican Dollars per day.");
+                System.out.println("You will need to exchange your USD to the local currency before you arrive." +
+                        " For $"+df3.format(cash1)+" you should receive a total of "+ df3.format(jdollar)+" in Jamaican Dollars.");
+                System.out.println("Enjoy your trip to Jamaica!");
+                break;
+            default:
+                System.out.println("You have entered an Invalid Choice! Select either Mexico or Jamaica.");
+                break;
+        }
+
+    }
+}
